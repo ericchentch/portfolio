@@ -1,14 +1,14 @@
-import useSWR from "swr";
-import Link from "next/link";
-import fetcher from "lib/fetcher";
-import { Data, PostsProps, StringProps } from "lib/types";
-import { convertToSlug, formatDate } from "lib/helpers";
+import useSWR from 'swr';
+import Link from 'next/link';
+import fetcher from 'lib/fetcher';
+import { Data, PostsProps, StringProps } from 'lib/types';
+import { convertToSlug, formatDate } from 'lib/helpers';
 
-import { Container, Item, PostsDescription } from "components/Posts/styles";
-import { Flex } from "components/Layout/Container/styles";
+import { Container, Item, PostsDescription } from 'components/Posts/styles';
+import { Flex } from 'components/Layout/Container/styles';
 
 export const Posts = ({ title }: StringProps) => {
-  const { data } = useSWR<Data>("/api/medium", fetcher);
+  const { data } = useSWR<Data>('/api/medium', fetcher);
 
   return (
     <Container>
@@ -19,7 +19,7 @@ export const Posts = ({ title }: StringProps) => {
             <Item>
               <Flex>
                 <Flex>
-                  <span className="item-number">{`${id < 9 ? "0" : ""}${
+                  <span className='item-number'>{`${id < 9 ? '0' : ''}${
                     id + 1
                   }`}</span>
                   <h4>{item.title.substring(0, 65)}</h4>
@@ -28,7 +28,7 @@ export const Posts = ({ title }: StringProps) => {
               </Flex>
               <PostsDescription
                 dangerouslySetInnerHTML={{
-                  __html: item.description.substring(0, 300) + "...",
+                  __html: item.description.substring(0, 300) + '...',
                 }}
               />
             </Item>

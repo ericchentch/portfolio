@@ -1,10 +1,10 @@
-import Container from "components/Layout/Container";
-import { MostListened } from "components/MostListened";
-import { Paragraph } from "pages/blog";
+import Container from 'components/Layout/Container';
+import { MostListened } from 'components/MostListened';
+import { Paragraph } from 'pages/blog';
 
 export default function TopTracks() {
   return (
-    <Container title="Top Tracks - Lasha Kakabadze">
+    <Container title='Top Tracks - Eric Chen'>
       <h1>Top Tracks</h1>
       <Paragraph>
         Some of my personal favorite records on Spotify, that I think are
