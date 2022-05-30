@@ -1,11 +1,11 @@
-import useSWR from "swr";
-import fetcher from "lib/fetcher";
-import { Flex } from "components/Layout/Container/styles";
-import { Container, Item } from "components/Posts/styles";
-import { Data, ProjectsProps } from "lib/types";
+import useSWR from 'swr';
+import fetcher from 'lib/fetcher';
+import { Flex } from 'components/Layout/Container/styles';
+import { Container, Item } from 'components/Posts/styles';
+import { Data, ProjectsProps } from 'lib/types';
 
 export const Projects = () => {
-  const { data } = useSWR<Data>("/api/github", fetcher);
+  const { data } = useSWR<Data>('/api/github', fetcher);
 
   return (
     <Container>
@@ -17,15 +17,15 @@ export const Projects = () => {
           return (
             <a
               href={item.htmlUrl}
-              target="_blank"
-              className="color-black"
+              target='_blank'
+              className='color-black'
               key={id}
-              rel="noopener noreferrer"
+              rel='noopener noreferrer'
             >
               <Item>
                 <Flex>
                   <Flex>
-                    <span className="item-number">{`${id < 9 ? "0" : ""}${
+                    <span className='item-number'>{`${id < 9 ? '0' : ''}${
                       id + 1
                     }`}</span>
                     <h4>{item.name}</h4>

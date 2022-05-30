@@ -1,14 +1,14 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import { Data } from "lib/types";
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { Data } from 'lib/types';
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   try {
-    if (req.method === "GET") {
+    if (req.method === 'GET') {
       const userReposResponse = await fetch(
-        "https://api.github.com/users/adrinlol/repos?per_page=10"
+        'https://api.github.com/users/edunhnil/repos?per_page=10',
       );
 
       const repositories = await userReposResponse.json();
@@ -16,7 +16,7 @@ export default async function handler(
       const mine = repositories.filter((repo: Data) => !repo.fork);
 
       const popular = mine
-        .filter((count: Data) => count.stargazers_count > 30)
+        .filter((count: Data) => count.stargazers_count > 0)
         .map((repo: Data) => ({
           htmlUrl: repo.html_url,
           name: repo.name.substring(0, 65),
@@ -25,9 +25,11 @@ export default async function handler(
         }));
 
       res.setHeader(
-        "Cache-Control",
-        "public, s-maxage=1200, stale-while-revalidate=600"
+        'Cache-Control',
+        'public, s-maxage=1200, stale-while-revalidate=600',
       );
+
+      console.log(mine);
 
       return res.status(200).json({
         popular,
